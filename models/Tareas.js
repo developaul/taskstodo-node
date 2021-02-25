@@ -4,6 +4,19 @@ class Tareas {
 
     _listado = {};
 
+    get listadoArr() {
+
+        let listado = [];
+
+        Object.keys(this._listado).forEach(key => {
+
+            listado = [...listado, this._listado[key]];
+
+        });
+
+        return listado;
+    }
+
     constructor() {
         this._listado = {};
     }
