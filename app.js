@@ -1,4 +1,9 @@
-const Tareas = require('./models/Tareas');
+const Tasks = require('./models/Tasks');
+
+const {
+    saveData
+} = require('./helpers/saveFile');
+
 const {
     inquireMenu,
     pauseMenu,
@@ -11,7 +16,7 @@ const main = async () => {
 
     console.clear();
 
-    const tareas = new Tareas();
+    const tasks = new Tasks();
 
     let opt = '';
 
@@ -23,13 +28,15 @@ const main = async () => {
 
             case '1':
                 const desc = await readInput('Descripción:');
-                tareas.crearTarea(desc);
+                tasks.createTask(desc);
                 break;
 
             case '2':
-                console.log(tareas.listadoArr);
+                console.log(tasks.listadoArr);
                 break;
         }
+
+        saveData(tasks.listArr);
 
         if (opt !== '0') await pauseMenu();
 

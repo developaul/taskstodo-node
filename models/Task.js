@@ -1,19 +1,19 @@
 const { v4: uuidv4 } = require('uuid');
 
-class Tarea {
+class Task {
 
     id = '';
     desc = '';
-    completadoEn = null;
+    completedIn = null;
 
     constructor(desc) {
 
         this.id = uuidv4();
         this.desc = desc;
-        this.completadoEn = null;
+        this.completedIn = null;
 
     }
 
 }
 
-module.exports = Tarea;
+module.exports = Task;
