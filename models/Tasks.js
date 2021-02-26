@@ -9,9 +9,7 @@ class Tasks {
         let list = [];
 
         Object.keys(this._list).forEach(key => {
-
             list = [...list, this._list[key]];
-
         });
 
         return list;
@@ -21,12 +19,16 @@ class Tasks {
         this._list = {};
     }
 
-    createTask(desc = '') {
+    loadTasksFromArr(tasks = []) {
+        tasks.forEach(task => {
+            this._list[task.id] = task
+        });
+    }
 
+    createTask(desc = '') {
         const task = new Task(desc);
 
         this._list[task.id] = task;
-
     }
 
 }

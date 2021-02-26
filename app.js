@@ -1,8 +1,9 @@
 const Tasks = require('./models/Tasks');
 
 const {
-    saveData
-} = require('./helpers/saveFile');
+    saveData,
+    loadData
+} = require('./helpers/crud');
 
 const {
     inquireMenu,
@@ -16,9 +17,13 @@ const main = async () => {
 
     console.clear();
 
+    let opt = '';
+
     const tasks = new Tasks();
 
-    let opt = '';
+    const dbTasks = loadData();
+
+    if (dbTasks) tasks.loadTasksFromArr(dbTasks);
 
     do {
 
@@ -32,7 +37,7 @@ const main = async () => {
                 break;
 
             case '2':
-                console.log(tasks.listadoArr);
+                console.log(tasks._list);
                 break;
         }
 
