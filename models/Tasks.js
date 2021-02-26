@@ -47,6 +47,32 @@ class Tasks {
 
     }
 
+    listCompletedPending(completed = true) {
+
+        console.log();
+
+        let count = 0;
+
+        this.listArr.forEach(({ completedIn, desc }) => {
+
+            const state = (completedIn) ? 'Completado'.green : 'Pendiente'.red;
+
+            if (completed) {
+                if (completedIn) {
+                    ++count;
+                    console.log(`${`${count}.`.green} ${desc} :: ${completedIn}`);
+                }
+            } else {
+                if (!completedIn) {
+                    ++count;
+                    console.log(`${`${count}.`.green} ${desc} :: ${state}`);
+                }
+            }
+
+        });
+
+    }
+
 }
 
 module.exports = Tasks;

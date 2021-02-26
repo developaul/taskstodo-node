@@ -40,6 +40,14 @@ const main = async () => {
                 tasks.listTasks();
                 break;
 
+            case '3':
+                tasks.listCompletedPending(true);
+                break;
+
+            case '4':
+                tasks.listCompletedPending(false);
+                break;
+
         }
 
         saveData(tasks.listArr);
