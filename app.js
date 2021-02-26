@@ -6,6 +6,7 @@ const {
 } = require('./helpers/crud');
 
 const {
+    showListCheckList,
     listTasksDelete,
     inquireMenu,
     pauseMenu,
@@ -51,7 +52,8 @@ const main = async () => {
                 break;
 
             case '5':
-                console.log('Completando tarea...');
+                const ids = await showListCheckList(tasks.listArr);
+                tasks.toggleCompleted(ids);
                 break;
 
             case '6':
