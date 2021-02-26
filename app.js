@@ -6,9 +6,11 @@ const {
 } = require('./helpers/crud');
 
 const {
+    listTasksDelete,
     inquireMenu,
     pauseMenu,
-    readInput
+    readInput,
+    confirm
 } = require('./helpers/inquirer');
 
 require('colors');
@@ -48,6 +50,23 @@ const main = async () => {
                 tasks.listCompletedPending(false);
                 break;
 
+            case '5':
+                console.log('Completando tarea...');
+                break;
+
+            case '6':
+                const id = await listTasksDelete(tasks.listArr);
+                if (id === '0') break;
+
+                const ok = await confirm('¿Está seguro?');
+                if (!ok) break;
+
+                tasks.deleteTask(id);
+                console.log('Tarea borrada');
+                break;
+
+            case '0':
+                break;
         }
 
         saveData(tasks.listArr);
