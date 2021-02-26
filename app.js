@@ -37,8 +37,9 @@ const main = async () => {
                 break;
 
             case '2':
-                console.log(tasks._list);
+                tasks.listTasks();
                 break;
+
         }
 
         saveData(tasks.listArr);
